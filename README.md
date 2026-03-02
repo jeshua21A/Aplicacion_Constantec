@@ -115,3 +115,23 @@ mv dist ../api-constantec/web-app
 ```shell
 ~ $ asdf install
 ```
+
+## Pruebas unitarias para el Back-End
+
+#### Instalación de las siguientes librerias para pytest
+```shell
+pip install httpx pytest-asyncio
+pip install pytest
+```
+
+#### 1. Entrar al contenedor de constantec-dev
+```shell
+docker exec -it constantec-dev /bin/bash
+```
+
+#### 2. Ejecutar el comando de pytest para observar los detalles de la prueba
+```shell
+python -m pytest
+```
+
+#### 3. Dentro del entorno de pytest se pueden usar los siguientes comandos para debuggear cada breakpoint

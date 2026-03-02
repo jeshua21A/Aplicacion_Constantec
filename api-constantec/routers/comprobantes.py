@@ -6,19 +6,10 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from comun.response import Response as CommonResponse
-from database.connection import SessionLocal
+from database.connection import get_db
 from models.tables import ComprobantesPago, Estudiantes
 
 router = APIRouter()
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 
 # Carpeta donde se guardarán los PDFs
 UPLOAD_DIR = "/app/uploads/comprobantes"

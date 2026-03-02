@@ -11,22 +11,13 @@ from consultas.consulta_estudiante import (
     estado_solicitud,
     historial_solicitudes,
 )
-from database.connection import SessionLocal
+from database.connection import get_db
 from models.tables import ConstanciaOpciones, Constancias, Solicitudes
 from paquetes import schemas
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 
 @router.post("/", response_model=schemas.SolicitudRequestSchema)
 def registrar_solicitud(data_constancia: schemas.CrearConstanciaRequest, db: Session = Depends(get_db), auth_user: dict[str, Any] = Depends(get_current_user)):

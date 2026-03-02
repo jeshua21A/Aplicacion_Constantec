@@ -33,7 +33,7 @@ INSERT INTO [dbo].[Usuarios_administradores] ([username], [password], [is_active
 ('admin', '$2b$12$71/Hi78TNE/eFLx.4j3UB.N5szktjHT0JJ1ArZL4ooDK79wPXa0dK', 1, 1);
 
 --- Consultas
-DELETE FROM estudiantes WHERE id = 12;
+DELETE FROM estudiantes WHERE id = 24;
 
 SELECT * FROM usuarios_administradores;
 SELECT * FROM estudiantes;

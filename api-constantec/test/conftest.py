@@ -4,7 +4,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists, create_database
-from routers.comprobantes import get_db
+from database.connection import get_db
 from fastapi.testclient import TestClient
 from models.factories import EstudiantesFactory
 
@@ -54,7 +54,7 @@ def session():
     
     yield db
     
-    db.close()
+    #db.close()
     #transaction.rollback() # Faster than dropping tables: rolls back changes
     connection.close()
 
@@ -78,11 +78,10 @@ def client(session):
         finally:
             pass # Session is handled by the fixture lifecycle
 
-    #breakpoint()
     app.dependency_overrides[get_db] = override_get_db
 
     #c = TestClient(app)
-    with TestClient(app) as c:
+    with TestClient(app, base_url="http://localhost:8000") as c:
         yield c
     
     # Reset the overrides so other tests aren't affected

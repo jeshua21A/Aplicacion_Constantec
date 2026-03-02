@@ -5,21 +5,11 @@ from sqlalchemy.orm import Session
 
 from autenticacion.seguridad import get_current_user
 from consultas.consulta_estudiante import guardar_encuesta_estudiante
-from database.connection import SessionLocal
+from database.connection import get_db
 from models.tables import EncuestaSatisfaccion
 from paquetes import schemas
 
 router = APIRouter()
-
-
-# Dependencias para obtener sesión de la base de datos
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 
 @router.post("/", response_model=schemas.EncuestaSatisfaccionSalida)
 def guardar_encuesta(
