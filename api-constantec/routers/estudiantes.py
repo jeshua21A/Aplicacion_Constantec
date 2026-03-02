@@ -11,6 +11,7 @@ from paquetes import schemas
 
 router = APIRouter()
 
+
 @router.get("/{no_control}", response_model=schemas.EstudiantesSalida)
 def buscar_perfil(no_control: str, db: Session = Depends(get_db), auth_user: dict[str, Any] = Depends(get_current_user)):
     estudiante = obtener_estudiante_por_no_control(db, no_control)

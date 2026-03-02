@@ -1,32 +1,31 @@
 from fastapi import status
+
 from models.factories import EstudiantesFactory
 from models.tables import Estudiantes
 
+
 def test_get_estudiante(client, session):
     # 1. ARRANGE: Create a real record in the Postgres test DB with one line!
-    breakpoint()
     estudiante = EstudiantesFactory()
-    
+
     # 2. Take the user and password of endpoint data
     login_data = {"usuario": estudiante.no_control, "password": "test"}
     login_response = client.post("/v1/login/", json=login_data)
 
     # 3. Extract the token
     token = login_response.json().get("data", {}).get("token")
-    
+
     # 4. ACT: Call the API endpoint
     auth_headers = {"Authorization": f"Bearer {token}"}
     estudiante_response = client.get(f"/v1/estudiantes/{estudiante.no_control}", headers=auth_headers)
 
-    # 5. ASSERT: 
+    # 5. ASSERT:
     # Check if the API responded successfully
-    breakpoint()
     assert estudiante_response.status_code == status.HTTP_200_OK
     api_data = estudiante_response.json()
 
     # 6. DATABASE COMPARISON:
     # Fetch the record directly from Postgres to verify
-    breakpoint()
     db_record = session.query(Estudiantes).filter(Estudiantes.id == estudiante.id).first()
 
     # Compare API response against the Database record

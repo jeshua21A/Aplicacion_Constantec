@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+
 @router.post("/", response_model=CommonResponse)
 async def login_for_access_token(login_request: schemas.LoginRequest, response: Response, db: Session = Depends(get_db)):
     usuario = None

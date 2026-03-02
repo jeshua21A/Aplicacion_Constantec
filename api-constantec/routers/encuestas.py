@@ -11,6 +11,7 @@ from paquetes import schemas
 
 router = APIRouter()
 
+
 @router.post("/", response_model=schemas.EncuestaSatisfaccionSalida)
 def guardar_encuesta(
     data_encuesta: schemas.EncuestaSatisfaccionCreate,

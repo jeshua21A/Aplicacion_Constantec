@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+
 @router.post("/", response_model=schemas.SolicitudRequestSchema)
 def registrar_solicitud(data_constancia: schemas.CrearConstanciaRequest, db: Session = Depends(get_db), auth_user: dict[str, Any] = Depends(get_current_user)):
     if getattr(data_constancia, "descripcion", None) is None or len(data_constancia.descripcion) == 0:

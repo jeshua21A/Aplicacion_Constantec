@@ -25,6 +25,7 @@ try:
 except Exception as e:
     logger.warning("Error al conectar la base de datos: ", e)
 
+
 # Dependencias para obtener sesión de la base de datos
 def get_db_factory(session_class):
     def get_db():
@@ -33,6 +34,8 @@ def get_db_factory(session_class):
             yield db
         finally:
             db.close()
+
     return get_db
+
 
 get_db = get_db_factory(SessionLocal)

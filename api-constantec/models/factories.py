@@ -12,12 +12,13 @@ from models.tables import Estudiantes
 
 session = SessionLocal()
 
+
 class EstudiantesFactory(SQLAlchemyModelFactory):
     class Meta:
         model = Estudiantes
         sqlalchemy_session = session
         sqlalchemy_session_persistence = "commit"
-    
+
     no_control = factory.Faker("numerify", text="########")
     nombre = factory.Faker("name")
     apellidos = factory.Faker("last_name")

@@ -10,6 +10,7 @@ from paquetes import schemas
 
 router = APIRouter()
 
+
 @router.get("/constancias", response_model=list[schemas.ConstanciaSalida])
 def listar_constancias(db: Session = Depends(get_db), auth_user: dict[str, Any] = Depends(get_current_user)):
     return db.query(Constancias).all()
