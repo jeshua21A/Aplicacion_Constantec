@@ -135,3 +135,4 @@ python -m pytest
 ```
 
 #### 3. Dentro del entorno de pytest se pueden usar los siguientes comandos para debuggear cada breakpoint
+![alt text](images/pytest_commands.png)
