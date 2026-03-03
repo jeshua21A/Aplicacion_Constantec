@@ -4,20 +4,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from autenticacion.seguridad import get_current_user
-from database.connection import SessionLocal
+from database.connection import get_db
 from models.tables import Constancias
 from paquetes import schemas
 
 router = APIRouter()
-
-
-# Dependencias para obtener sesión de la base de datos
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.get("/constancias", response_model=list[schemas.ConstanciaSalida])

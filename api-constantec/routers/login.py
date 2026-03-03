@@ -7,21 +7,12 @@ from autenticacion.seguridad import create_access_token, verify_password
 from comun.response import Response as CommonResponse
 from consultas.consulta_administrador import obtener_administrador_por_id
 from consultas.consulta_estudiante import obtener_estudiante_por_no_control
-from database.connection import SessionLocal
+from database.connection import get_db
 from paquetes import schemas
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
-
-
-# Dependencias para obtener sesión de la base de datos
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 @router.post("/", response_model=CommonResponse)

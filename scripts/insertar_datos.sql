@@ -1,3 +1,4 @@
+DROP DATABASE constantec_testing;
 INSERT INTO constancia_tipos (tipo, descripcion) VALUES
 ('Constancia de inscritos', 'Documento que certifica que un estudiante está actualmente inscrito en una institución educativa, indicando generalmente el semestre o ciclo escolar en curso.'),
 ('Constancia de promedio general', 'Documento que muestra el promedio general de todos los semestre cursados por el estudiante, sirviendo como prueba de que el estudiante aún sigue formando parte de la institución.'),
@@ -32,6 +33,8 @@ INSERT INTO [dbo].[Usuarios_administradores] ([username], [password], [is_active
 ('admin', '$2b$12$71/Hi78TNE/eFLx.4j3UB.N5szktjHT0JJ1ArZL4ooDK79wPXa0dK', 1, 1);
 
 --- Consultas
+DELETE FROM estudiantes WHERE id = 24;
+
 SELECT * FROM usuarios_administradores;
 SELECT * FROM estudiantes;
 SELECT * FROM solicitudes;
