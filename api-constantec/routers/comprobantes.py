@@ -60,7 +60,7 @@ async def guardar_comprobante(no_control: str = Form(...), archivo: UploadFile =
 
 
 @router.get("/{no_control}")
-def obtener_estado_pago(no_control: str, db: Session = Depends(get_db)):
+def estado_pago(no_control: str, db: Session = Depends(get_db)):
     estudiante = db.query(Estudiantes).filter(Estudiantes.no_control == no_control).first()
 
     if estudiante is None:
