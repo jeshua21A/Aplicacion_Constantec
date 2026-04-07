@@ -1,6 +1,3 @@
-from models.factories import AdminFactory, EstudiantesFactory
-
-
 # def crear_estudiantes(numero_estudiantes: int):
 #     EstudiantesFactory.create_batch(5)
 
