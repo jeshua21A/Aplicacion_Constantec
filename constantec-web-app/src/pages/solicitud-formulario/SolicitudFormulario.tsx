@@ -142,8 +142,7 @@ export const SolicitudFormulario = () => {
               defaultValue={[]}
               value={opciones || []}
               onValueChange={(valores) => {
-                const ultimoSeleccionado = valores.slice(-1)
-                setOpciones(ultimoSeleccionado)
+                setOpciones(valores)
               }}
               columns={{ initial: '1', sm: '3', md: '3' }}
             >
