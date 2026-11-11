@@ -139,8 +139,7 @@ export function ValidacionRequisitos() {
 
         {data.estado === IdEstadoComprobante.APROBADO && (
           <Text color="green">
-            Tu comprobante está en revisión. Espera la validación del personal
-            administrativo.
+            Tu comprobante ha sido aprobado. Puedes continuar con la solicitud.
           </Text>
         )}
 
